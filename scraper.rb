@@ -18,7 +18,6 @@ end
 
 ids_from_claim('39:18915989').each do |id|
   data = WikiData::Fetcher.new(id: id).data or next
-  warn data
   ScraperWiki.save_sqlite([:id], data)
 end
 
