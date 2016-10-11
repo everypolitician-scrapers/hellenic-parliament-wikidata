@@ -13,10 +13,10 @@ rescue RestClient::Exception => e
   abort "Wikidata query #{query.inspect} failed: #{e.message}"
 end
 
-# member = EveryPolitician::Wikidata.wdq('claim[39:18915989]')
+# Position Held = Member of the Hellenic Parliament
 member = wikidata_sparql('SELECT ?item WHERE { ?item wdt:P39 wd:Q18915989 . }')
 
-# withId = EveryPolitician::Wikidata.wdq('claim[2278]')
+# has Property: "Member of the Hellenic Parliament ID"
 withId = wikidata_sparql('SELECT ?item WHERE { ?item wdt:P2278 ?dummy0 . }')
 
-EveryPolitician::Wikidata.scrape_wikidata(ids: member | withId, batch_size: 100, output: false)
+EveryPolitician::Wikidata.scrape_wikidata(ids: member | withId)
