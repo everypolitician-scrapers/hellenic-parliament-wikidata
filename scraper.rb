@@ -12,4 +12,4 @@ withId = EveryPolitician::Wikidata.sparql('SELECT ?item WHERE { ?item wdt:P2278 
 
 existing = EveryPolitician::Index.new.country("Greece").lower_house.popolo.persons.map(&:wikidata).compact
 
-EveryPolitician::Wikidata.scrape_wikidata(ids: existing | member | withId)
+EveryPolitician::Wikidata.scrape_wikidata(ids: existing | member | withId, batch_size: 250)
